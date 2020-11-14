@@ -1,1 +1,19 @@
 # Retrieve the weather data from an API.
+
+import pyowm
+
+api_key = '*********'
+owm = pyowm.OWM(api_key)
+city = 'Paris'
+loc = owm.weather_manager().weather_at_place(city)
+weather = loc.weather
+
+temp = weather.temperature(unit=celsius)
+status = weather.detailed_status
+cleaned_temp = (int(temp['temp']))
+
+final_temp = ("The temperature today in " + str(city) + " is " + str(cleaned_temp) + " degrees celsius.")
+final_day = ( "The day today will have " + str(status) + " .")
+
+print(final_temp)
+print(final_day)
